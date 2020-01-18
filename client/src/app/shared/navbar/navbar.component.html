@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a
+    class="navbar-brand"
+    [routerLink]="['/']">My Blogs
+  </a>
+  <button 
+    class="navbar-toggler" 
+    type="button" 
+    data-toggle="collapse" 
+    data-target="#navbarsExampleDefault" 
+    aria-controls="navbarsExampleDefault" 
+    aria-expanded="false" 
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li 
+        data-toggle="collapse" 
+        data-target=".navbar-collapse.show"      
+        class="nav-item"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions] = "{exact:true}">
+        <a
+        class="nav-link" 
+        [routerLink]="['/home']">Home <span></span></a
+        >
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li 
+      data-toggle="collapse" 
+      data-target=".navbar-collapse.show"
+      class="nav-item"  
+      [routerLinkActive]="['active']" 
+      [routerLinkActiveOptions] = "{exact:true}">
+        <a
+          class="nav-link" 
+          [routerLink]="['/blog/posts']">Posts </a
+          >
+      </li>
+      <li class="nav-item"  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/']">Profile </a>
+      </li>
+      <li class="nav-item"  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/']">Login </a>
+      </li>
+      <li class="nav-item"  [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/']">Register</a>
+      </li>
+      <li class="nav-item" ><a class="nav-link" (click)="onLogoutClick($event)" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <h3 class="my-heading">
+      My List of Posts
+      <small class="text-muted">written by: John Smith</small>
+    </h3>    
+  </div>
+  <div class="row">
+    <div class="col-lg">
+      <a routerLink="/blog/post/new" class="btn btn-secondary">New Post</a>
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf="!loading">
+    <div class="col-sm-6" *ngFor="let post of posts | paginate: { itemsPerPage: perPage, currentPage: page, totalItems: postsCount }">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.body | slice:0:20  }}...</p>
+          <a [routerLink]="['/blog/post', post.id]" class="btn btn-primary">Read More</a>
+          <button 
+            (click)="onDelete(post)"
+            class="btn btn-danger">Delete Post</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="row mt-5">
+    <div class="spinner-border text-primary m-5 mx-auto" style="width: 3rem; height: 3rem;" *ngIf="loading">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="mx-auto" style="width: 400px;" *ngIf="!loading">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>  
+  </div>
+</div>
